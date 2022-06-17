@@ -1,9 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Linear, Radial } from '../Directions/Directions'
 import './Sidebar.css'
 
 export const Sidebar = () => {
     const [direction, setDirection] = useState('linear')
+    const [colorOne, setColorOne] = useState()
+    const [colorTwo, setColorTwo] = useState()
+
+    useEffect(() => {
+        console.log(colorOne)
+        console.log(colorTwo)
+    }, [colorOne])
+
+    const handleChangeOne = (e) => {
+        setColorOne(e.target.value);
+    }
+
+    const handleChangeTwo = (e) => {
+        setColorTwo(e.target.value);
+    }
 
     return (
         <div className="sidebar">
@@ -17,8 +32,9 @@ export const Sidebar = () => {
             {direction === 'linear' ? <Linear></Linear> : <Radial></Radial>}
 
             <h2>Colors</h2>
-            <button>A</button>
-            <button>B</button>
+            <input type='color' onChange={handleChangeOne}></input>
+            <input type='color' onChange={handleChangeTwo}></input>
+            
             <button>Random</button>
 
             <h2>Output format</h2>
