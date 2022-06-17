@@ -1,0 +1,8 @@
+.gradient {
+    width: 75vw;
+    height:100vh;
+    background: #89AA28;
+    background: -webkit-linear-gradient(top left, #89AA28, #66A75D);
+    background: -moz-linear-gradient(top left, #89AA28, #66A75D);
+    background: linear-gradient(to bottom right, #89AA28, #66A75D);
+}
