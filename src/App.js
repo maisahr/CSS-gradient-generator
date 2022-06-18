@@ -6,7 +6,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 function App() {
   const [colorOne, setColorOne] = useState()
   const [colorTwo, setColorTwo] = useState()
-  const [direction, setDirection] = useState()
+  const [direction, setDirection] = useState({style: 'linear', direction:'to top left'})
 
   const handleUpdateOne = (colorOne) => {
     setColorOne(colorOne);

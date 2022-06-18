@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Linear, Radial } from '../Directions/Directions'
+import { Directions } from '../Directions/Directions'
 import './Sidebar.css'
 
 export const Sidebar = ({handleUpdateOne, handleUpdateTwo, handleUpdateDirection}) => {
@@ -22,7 +22,7 @@ export const Sidebar = ({handleUpdateOne, handleUpdateTwo, handleUpdateDirection
             <button id='radial' onClick={() => setDirection('radial')}>Radial</button>
 
             <h2>Direction</h2>
-            {direction === 'linear' ? <Linear handleUpdate={handleUpdateDirection}></Linear> : <Radial handleUpdate={handleUpdateDirection}></Radial>}
+            {direction === 'linear' ? <Directions styleProp={'linear'} handleUpdate={handleUpdateDirection}/> : <Directions styleProp={'radial'} handleUpdate={handleUpdateDirection}/>}
 
             <h2>Colors</h2>
             <input type='color' onChange={handleChangeOne}></input>
