@@ -2,22 +2,15 @@ import { useEffect, useState } from 'react'
 import { Linear, Radial } from '../Directions/Directions'
 import './Sidebar.css'
 
-export const Sidebar = () => {
+export const Sidebar = ({handleUpdateOne, handleUpdateTwo}) => {
     const [direction, setDirection] = useState('linear')
-    const [colorOne, setColorOne] = useState()
-    const [colorTwo, setColorTwo] = useState()
-
-    useEffect(() => {
-        console.log(colorOne)
-        console.log(colorTwo)
-    }, [colorOne])
 
     const handleChangeOne = (e) => {
-        setColorOne(e.target.value);
-    }
+        handleUpdateOne(e.target.value);
+    } 
 
     const handleChangeTwo = (e) => {
-        setColorTwo(e.target.value);
+        handleUpdateTwo(e.target.value);
     }
 
     return (
