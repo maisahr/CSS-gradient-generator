@@ -32,6 +32,12 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
         handleChange(newValues)
     }
 
+    const handleChangeRandom = () => {
+        newValues.colorOne = handleRandom();
+        newValues.colorTwo = handleRandom();
+        handleChange(newValues)
+    }
+
     return (
         <div className="sidebar">
             <h1>CSS GRADIENT GENERATOR</h1>
@@ -47,7 +53,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <input type='color' value={newValues.colorOne} onChange={handleChangeColorOne}></input>
             <input type='color' value={newValues.colorTwo} onChange={handleChangeColorTwo}></input>
             
-            <button onClick={() => handleRandom()}>Random</button>
+            <button onClick={() => handleChangeRandom()}>Random</button>
 
             <h2>Output format</h2>
             <button>Hex</button>
