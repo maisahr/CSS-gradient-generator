@@ -6,7 +6,7 @@ export const Gradient = ({values}) => {
             <main className="gradient"></main>
             <style>{`
                     .gradient {
-                        background-image: ${values.style}-gradient(${values.direction}, ${values.colorOne}, ${values.colorTwo});
+                        background-image: ${values.style}-gradient(${values.preposition + values.direction}, ${values.colorOne}, ${values.colorTwo});
                     }
             `}</style>
         </>

@@ -7,12 +7,18 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
     const newValues = {
         style: values.style,
         direction: values.direction,
+        preposition: values.preposition,
         colorOne: values.colorOne,
         colorTwo: values.colorTwo
     }
 
     const handleChangeStyle = (style) => {
         newValues.style = style;
+        if(newValues.style === 'linear'){
+            newValues.preposition = 'to ';
+        } else {
+            newValues.preposition = 'at ';
+        }
         handleChange(newValues)
     }
 

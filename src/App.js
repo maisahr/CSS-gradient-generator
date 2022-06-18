@@ -18,6 +18,7 @@ function App() {
   const initialValues = {
     style: 'linear',
     direction: 'top left',
+    preposition: 'to ',
     colorOne: generateRandomColor(),
     colorTwo: generateRandomColor()
   }
