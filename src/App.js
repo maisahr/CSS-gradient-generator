@@ -6,6 +6,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 function App() {
 
   const generateRandomColor = () => {
+    console.log('hola')
     let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
     if(randomColor.length !== 7){
       const missing = 7 - randomColor.length;
@@ -14,37 +15,25 @@ function App() {
     return randomColor;
   }
 
-  const [colorOne, setColorOne] = useState(generateRandomColor())
-  const [colorTwo, setColorTwo] = useState(generateRandomColor())
-  const [direction, setDirection] = useState({style: 'linear', direction:'to top left'})
-
-  const handleUpdateOne = (colorOne) => {
-    setColorOne(colorOne);
+  const initialValues = {
+    style: 'linear',
+    direction: 'top left',
+    colorOne: generateRandomColor(),
+    colorTwo: generateRandomColor()
   }
 
-  const handleUpdateTwo = (colorTwo) => {
-    setColorTwo(colorTwo);
-  }
+  const [values, setValues] = useState(initialValues)
 
-  const handleUpdateDirection = (direction) => {
-    setDirection(direction);
+  const handleChange = (newValues) => {
+    console.log(newValues)
+    setValues(newValues)
   }
 
   return (
     <div className="App">
-      <Sidebar 
-        colorOne={colorOne}
-        colorTwo={colorTwo}
-        randomColor={generateRandomColor}
-        handleUpdateOne={handleUpdateOne}
-        handleUpdateTwo={handleUpdateTwo}
-        handleUpdateDirection={handleUpdateDirection}
-        direction={direction}>
+      <Sidebar values={values} handleChange={handleChange} handleRandom={generateRandomColor}>
       </Sidebar>
-      <Gradient 
-        colorOne={colorOne}
-        colorTwo={colorTwo}
-        direction={direction}>
+      <Gradient values={values}>
       </Gradient>
     </div>
   );

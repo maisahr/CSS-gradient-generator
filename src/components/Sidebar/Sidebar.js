@@ -1,21 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import './Sidebar.css'
 
-export const Sidebar = ({colorOne, colorTwo, randomColor, handleUpdateOne, handleUpdateTwo, handleUpdateDirection, direction}) => {
-    const [style, setStyle] = useState('linear')
+export const Sidebar = ({values, handleChange, handleRandom}) => {
 
-    const handleChangeOne = (e) => {
-        handleUpdateOne(e.target.value);
-    } 
-
-    const handleChangeTwo = (e) => {
-        handleUpdateTwo(e.target.value);
+    const newValues = {
+        style: values.style,
+        direction: values.direction,
+        colorOne: values.colorOne,
+        colorTwo: values.colorTwo
     }
 
-    const handleRandom = () => {
-        handleUpdateOne(randomColor());
-        handleUpdateTwo(randomColor());
+    const handleChangeStyle = (style) => {
+        newValues.style = style;
+        handleChange(newValues)
+    }
+
+    const handleChangeColorOne = (e) => {
+        newValues.colorOne = e.target.value;
+        handleChange(newValues)
+    }
+
+    const handleChangeColorTwo = (e) => {
+        newValues.colorTwo = e.target.value;
+        handleChange(newValues)
     }
 
     return (
@@ -23,15 +31,15 @@ export const Sidebar = ({colorOne, colorTwo, randomColor, handleUpdateOne, handl
             <h1>CSS GRADIENT GENERATOR</h1>
 
             <h2>Style</h2>
-            <button id='linear' onClick={() => setStyle('linear')}>Linear</button>
-            <button id='radial' onClick={() => setStyle('radial')}>Radial</button>
+            <button id='linear' onClick={() => handleChangeStyle('linear')}>Linear</button>
+            <button id='radial' onClick={() => handleChangeStyle('radial')}>Radial</button>
 
             <h2>Direction</h2>
-            <Directions styleProp={style} handleUpdate={handleUpdateDirection}/>
+            <Directions values={newValues} handleChange={handleChange}/>
 
             <h2>Colors</h2>
-            <input type='color' value={colorOne} onChange={handleChangeOne}></input>
-            <input type='color' value={colorTwo} onChange={handleChangeTwo}></input>
+            <input type='color' value={newValues.colorOne} onChange={handleChangeColorOne}></input>
+            <input type='color' value={newValues.colorTwo} onChange={handleChangeColorTwo}></input>
             
             <button onClick={() => handleRandom()}>Random</button>
 

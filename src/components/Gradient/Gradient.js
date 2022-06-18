@@ -1,12 +1,12 @@
 import './Gradient.css'
-export const Gradient = ({colorOne, colorTwo, direction}) => {
+export const Gradient = ({values}) => {
 
     return (
         <>
             <main className="gradient"></main>
             <style>{`
                     .gradient {
-                        background-image: ${direction.style}-gradient(${direction.direction}, ${colorOne}, ${colorTwo});
+                        background-image: ${values.style}-gradient(${values.direction}, ${values.colorOne}, ${values.colorTwo});
                     }
             `}</style>
         </>
