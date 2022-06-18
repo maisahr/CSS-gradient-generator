@@ -22,7 +22,7 @@ export const Sidebar = ({handleUpdateOne, handleUpdateTwo, handleUpdateDirection
             <button id='radial' onClick={() => setStyle('radial')}>Radial</button>
 
             <h2>Direction</h2>
-            {style === 'linear' ? <Directions styleProp={'linear'} handleUpdate={handleUpdateDirection}/> : <Directions styleProp={'radial'} handleUpdate={handleUpdateDirection}/>}
+            <Directions styleProp={style} handleUpdate={handleUpdateDirection}/>
 
             <h2>Colors</h2>
             <input type='color' onChange={handleChangeOne}></input>
