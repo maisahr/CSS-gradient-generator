@@ -6,8 +6,12 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 function App() {
 
   const generateRandomColor = () => {
-    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-    return randomColor
+    let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    if(randomColor.length !== 7){
+      const missing = 7 - randomColor.length;
+      randomColor = randomColor + '0'.repeat(missing);
+    }
+    return randomColor;
   }
 
   const [colorOne, setColorOne] = useState(generateRandomColor())
@@ -29,6 +33,9 @@ function App() {
   return (
     <div className="App">
       <Sidebar 
+        colorOne={colorOne}
+        colorTwo={colorTwo}
+        randomColor={generateRandomColor}
         handleUpdateOne={handleUpdateOne}
         handleUpdateTwo={handleUpdateTwo}
         handleUpdateDirection={handleUpdateDirection}

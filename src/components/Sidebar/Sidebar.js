@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import './Sidebar.css'
 
-export const Sidebar = ({handleUpdateOne, handleUpdateTwo, handleUpdateDirection, direction}) => {
+export const Sidebar = ({colorOne, colorTwo, randomColor, handleUpdateOne, handleUpdateTwo, handleUpdateDirection, direction}) => {
     const [style, setStyle] = useState('linear')
 
     const handleChangeOne = (e) => {
@@ -11,6 +11,11 @@ export const Sidebar = ({handleUpdateOne, handleUpdateTwo, handleUpdateDirection
 
     const handleChangeTwo = (e) => {
         handleUpdateTwo(e.target.value);
+    }
+
+    const handleRandom = () => {
+        handleUpdateOne(randomColor());
+        handleUpdateTwo(randomColor());
     }
 
     return (
@@ -25,10 +30,10 @@ export const Sidebar = ({handleUpdateOne, handleUpdateTwo, handleUpdateDirection
             <Directions styleProp={style} handleUpdate={handleUpdateDirection}/>
 
             <h2>Colors</h2>
-            <input type='color' onChange={handleChangeOne}></input>
-            <input type='color' onChange={handleChangeTwo}></input>
+            <input type='color' value={colorOne} onChange={handleChangeOne}></input>
+            <input type='color' value={colorTwo} onChange={handleChangeTwo}></input>
             
-            <button>Random</button>
+            <button onClick={() => handleRandom()}>Random</button>
 
             <h2>Output format</h2>
             <button>Hex</button>
