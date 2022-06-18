@@ -4,8 +4,14 @@ import { Gradient } from './components/Gradient/Gradient';
 import { Sidebar } from './components/Sidebar/Sidebar';
 
 function App() {
-  const [colorOne, setColorOne] = useState()
-  const [colorTwo, setColorTwo] = useState()
+
+  const generateRandomColor = () => {
+    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    return randomColor
+  }
+
+  const [colorOne, setColorOne] = useState(generateRandomColor())
+  const [colorTwo, setColorTwo] = useState(generateRandomColor())
   const [direction, setDirection] = useState({style: 'linear', direction:'to top left'})
 
   const handleUpdateOne = (colorOne) => {
