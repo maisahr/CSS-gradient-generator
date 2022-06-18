@@ -1,6 +1,10 @@
 import './Gradient.css'
 export const Gradient = ({values}) => {
 
+    if(values.style === 'linear' && values.direction === 'center') {
+        values.direction = 'top left'
+    }
+
     return (
         <>
             <main className="gradient"></main>
