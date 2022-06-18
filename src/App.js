@@ -25,7 +25,8 @@ function App() {
       <Sidebar 
         handleUpdateOne={handleUpdateOne}
         handleUpdateTwo={handleUpdateTwo}
-        handleUpdateDirection={handleUpdateDirection}>
+        handleUpdateDirection={handleUpdateDirection}
+        direction={direction}>
       </Sidebar>
       <Gradient 
         colorOne={colorOne}
