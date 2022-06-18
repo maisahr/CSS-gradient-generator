@@ -6,6 +6,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 function App() {
   const [colorOne, setColorOne] = useState()
   const [colorTwo, setColorTwo] = useState()
+  const [direction, setDirection] = useState()
 
   const handleUpdateOne = (colorOne) => {
     setColorOne(colorOne);
@@ -15,15 +16,21 @@ function App() {
     setColorTwo(colorTwo);
   }
 
+  const handleUpdateDirection = (direction) => {
+    setDirection(direction);
+  }
+
   return (
     <div className="App">
       <Sidebar 
         handleUpdateOne={handleUpdateOne}
-        handleUpdateTwo={handleUpdateTwo}>
+        handleUpdateTwo={handleUpdateTwo}
+        handleUpdateDirection={handleUpdateDirection}>
       </Sidebar>
       <Gradient 
         colorOne={colorOne}
-        colorTwo={colorTwo}>
+        colorTwo={colorTwo}
+        direction={direction}>
       </Gradient>
     </div>
   );
