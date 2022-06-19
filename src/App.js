@@ -24,23 +24,15 @@ function App() {
 
   const link = new URLSearchParams(window.location.href);
 
-  console.log(link)
-
-  console.log(link.entries())
-
   if(window.location.href.includes('?')) {
-    console.log('holi')
     const entries = link.entries();
 
-    const result = {}
     for(const [key, value] of entries) {
-      result[key.slice(key.indexOf('?')+1)] = value;
+      initialValues[key.slice(key.indexOf('?')+1)] = value;
+      console.log(initialValues)
     }
 
-    initialValues = {
-      ...result,
-      preposition: result.style === 'linear' ? 'to ' : 'at '
-    }
+    initialValues.preposition = initialValues.style === 'linear' ? 'to ' : 'at '
   }
 
   console.log(initialValues)

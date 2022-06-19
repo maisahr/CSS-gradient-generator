@@ -5,8 +5,6 @@ export const Gradient = ({values}) => {
         values.dir = 'top left'
     }
 
-    
-
     return (
         <>
             <main className="gradient"></main>
