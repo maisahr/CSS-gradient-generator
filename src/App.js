@@ -14,7 +14,7 @@ function App() {
     return randomColor;
   }
 
-  const initialValues = {
+  let initialValues = {
     style: 'linear',
     dir: 'top left',
     preposition: 'to ',
@@ -22,8 +22,28 @@ function App() {
     color2: generateRandomColor()
   }
 
+  const link = new URLSearchParams(window.location.href);
 
+  console.log(link)
 
+  console.log(link.entries())
+
+  if(window.location.href.includes('?')) {
+    console.log('holi')
+    const entries = link.entries();
+
+    const result = {}
+    for(const [key, value] of entries) {
+      result[key.slice(key.indexOf('?')+1)] = value;
+    }
+
+    initialValues = {
+      ...result,
+      preposition: result.style === 'linear' ? 'to ' : 'at '
+    }
+  }
+
+  console.log(initialValues)
   const [values, setValues] = useState(initialValues)
 
   const handleChange = (newValues) => {

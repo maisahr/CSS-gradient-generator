@@ -58,8 +58,8 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
         const link = new URL('http://localhost:3000/');
         link.searchParams.append('style', values.style);
         link.searchParams.append('dir', values.dir);
-        link.searchParams.append('c1', values.color1);
-        link.searchParams.append('c2', values.color2);
+        link.searchParams.append('color1', values.color1);
+        link.searchParams.append('color2', values.color2);
 
         navigator.clipboard.writeText(link);
         setLinkButton('Copied to clipboard!');
