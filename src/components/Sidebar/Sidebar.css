@@ -26,6 +26,11 @@ button {
     color: #3d4853;
 }
 
+button:hover {
+    background-color: #f1f4f8;
+    cursor: pointer;
+}
+
 .getButton {
     background-color: #f1f4f8;
     width: 16rem;

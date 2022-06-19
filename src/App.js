@@ -17,26 +17,29 @@ function App() {
   let initialValues = {
     style: 'linear',
     dir: 'top left',
+    dirId: 'arrow1',
     preposition: 'to ',
     color1: generateRandomColor(),
     color2: generateRandomColor()
   }
 
-  const link = new URLSearchParams(window.location.href);
-
   if(window.location.href.includes('?')) {
+    const link = new URLSearchParams(window.location.href);
     const entries = link.entries();
 
     for(const [key, value] of entries) {
       initialValues[key.slice(key.indexOf('?')+1)] = value;
-      console.log(initialValues)
     }
 
     initialValues.preposition = initialValues.style === 'linear' ? 'to ' : 'at '
   }
 
-  console.log(initialValues)
   const [values, setValues] = useState(initialValues)
+
+  if(values.style === 'linear' && values.dir === 'center') {
+    values.dir = 'top left'
+    values.dirId = 'arrow1'
+  }
 
   const handleChange = (newValues) => {
     setValues(newValues)
