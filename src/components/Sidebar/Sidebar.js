@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
 import './Sidebar.css'
@@ -88,10 +88,11 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <Directions values={newValues} handleChange={handleChange}/>
 
             <h2>Colors</h2>
-            <input type='color' value={newValues.color1} onChange={handleChangeColorOne}></input>
-            <input type='color' value={newValues.color2} onChange={handleChangeColorTwo}></input>
-            
-            <button onClick={() => handleChangeRandom()}>Random</button>
+            <div className='colors'>    
+                <input type='color' value={newValues.color1} onChange={handleChangeColorOne}></input>
+                <input type='color' value={newValues.color2} onChange={handleChangeColorTwo}></input>
+                <button onClick={() => handleChangeRandom()}>Random</button>
+            </div>
 
             <h2>Output format</h2>
             <button id='hex' onClick={() => setOutput('hex')}>Hex</button>
