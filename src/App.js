@@ -16,11 +16,13 @@ function App() {
 
   const initialValues = {
     style: 'linear',
-    direction: 'top left',
+    dir: 'top left',
     preposition: 'to ',
     colorOne: generateRandomColor(),
     colorTwo: generateRandomColor()
   }
+
+
 
   const [values, setValues] = useState(initialValues)
 

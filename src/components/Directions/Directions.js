@@ -2,7 +2,7 @@ export const Directions = ({values, handleChange}) => {
 
     const handleChangeDirection = (direction) => {
 
-        values.direction = direction;
+        values.dir = direction;
 
         handleChange(values);
     }

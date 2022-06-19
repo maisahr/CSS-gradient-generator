@@ -57,7 +57,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
     const getShareLink = () => {
         const link = new URL('http://localhost:3000/');
         link.searchParams.append('gs', values.style);
-        link.searchParams.append('dir', values.direction);
+        link.searchParams.append('dir', values.dir);
         link.searchParams.append('c1', values.colorOne);
         link.searchParams.append('c2', values.colorTwo);
 

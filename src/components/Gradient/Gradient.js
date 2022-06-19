@@ -1,8 +1,8 @@
 import './Gradient.css'
 export const Gradient = ({values}) => {
 
-    if(values.style === 'linear' && values.direction === 'center') {
-        values.direction = 'top left'
+    if(values.style === 'linear' && values.dir === 'center') {
+        values.dir = 'top left'
     }
 
     
@@ -12,7 +12,7 @@ export const Gradient = ({values}) => {
             <main className="gradient"></main>
             <style>{`
                     .gradient {
-                        background-image: ${values.style}-gradient(${values.preposition + values.direction}, ${values.colorOne}, ${values.colorTwo});
+                        background-image: ${values.style}-gradient(${values.preposition + values.dir}, ${values.colorOne}, ${values.colorTwo});
                     }
             `}</style>
         </>
