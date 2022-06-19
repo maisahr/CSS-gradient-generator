@@ -32,3 +32,7 @@ button {
     height: 3rem;
     font-weight: 600;
 }
+
+input {
+    border-style: none;
+}

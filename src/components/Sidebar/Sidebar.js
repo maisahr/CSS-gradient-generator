@@ -1,25 +1,54 @@
-import { useState } from 'react'
-import { Linear, Radial } from '../Directions/Directions'
+import { Directions } from '../Directions/Directions'
 import './Sidebar.css'
 
-export const Sidebar = () => {
-    const [direction, setDirection] = useState('linear')
+export const Sidebar = ({values, handleChange, handleRandom}) => {
+
+    const newValues = {
+        ...values
+    }
+
+    const handleChangeStyle = (style) => {
+        newValues.style = style;
+        if(newValues.style === 'linear'){
+            newValues.preposition = 'to ';
+        } else {
+            newValues.preposition = 'at ';
+        }
+        handleChange(newValues)
+    }
+
+    const handleChangeColorOne = (e) => {
+        newValues.colorOne = e.target.value;
+        handleChange(newValues)
+    }
+
+    const handleChangeColorTwo = (e) => {
+        newValues.colorTwo = e.target.value;
+        handleChange(newValues)
+    }
+
+    const handleChangeRandom = () => {
+        newValues.colorOne = handleRandom();
+        newValues.colorTwo = handleRandom();
+        handleChange(newValues)
+    }
 
     return (
         <div className="sidebar">
             <h1>CSS GRADIENT GENERATOR</h1>
 
             <h2>Style</h2>
-            <button id='linear' onClick={() => setDirection('linear')}>Linear</button>
-            <button id='radial' onClick={() => setDirection('radial')}>Radial</button>
+            <button id='linear' onClick={() => handleChangeStyle('linear')}>Linear</button>
+            <button id='radial' onClick={() => handleChangeStyle('radial')}>Radial</button>
 
             <h2>Direction</h2>
-            {direction === 'linear' ? <Linear></Linear> : <Radial></Radial>}
+            <Directions values={newValues} handleChange={handleChange}/>
 
             <h2>Colors</h2>
-            <button>A</button>
-            <button>B</button>
-            <button>Random</button>
+            <input type='color' value={newValues.colorOne} onChange={handleChangeColorOne}></input>
+            <input type='color' value={newValues.colorTwo} onChange={handleChangeColorTwo}></input>
+            
+            <button onClick={() => handleChangeRandom()}>Random</button>
 
             <h2>Output format</h2>
             <button>Hex</button>
