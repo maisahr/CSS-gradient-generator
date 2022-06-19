@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
 import './Sidebar.css'
 
 export const Sidebar = ({values, handleChange, handleRandom}) => {
 
-    const [output, setOutput] = useState('Hex');
+    const [output, setOutput] = useState('hex');
     const [cssButton, setCssButton] = useState('Get CSS');
     const [linkButton, setLinkButton] = useState('Get share link');
 
@@ -40,7 +40,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
     }
 
     const getCSS = (output) => {
-        if(output === 'Hex') {
+        if(output === 'hex') {
             hexGradient(values);
         } else {
             rgbGradient(values);
@@ -72,6 +72,12 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
 
     return (
         <div className="sidebar">
+            <style>{`
+                #${output} {
+                    background-color: #f1f4f8;
+                }
+            `}</style>
+
             <h1>CSS GRADIENT GENERATOR</h1>
 
             <h2>Style</h2>
@@ -88,8 +94,8 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button onClick={() => handleChangeRandom()}>Random</button>
 
             <h2>Output format</h2>
-            <button onClick={() => setOutput('Hex')}>Hex</button>
-            <button onClick={() => setOutput('Rgb')}>Rgb</button>
+            <button id='hex' onClick={() => setOutput('hex')}>Hex</button>
+            <button id='rgb' onClick={() => setOutput('rgb')}>Rgb</button>
 
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
