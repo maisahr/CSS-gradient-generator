@@ -1,15 +1,10 @@
-import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import './Sidebar.css'
 
 export const Sidebar = ({values, handleChange, handleRandom}) => {
 
     const newValues = {
-        style: values.style,
-        direction: values.direction,
-        preposition: values.preposition,
-        colorOne: values.colorOne,
-        colorTwo: values.colorTwo
+        ...values
     }
 
     const handleChangeStyle = (style) => {
