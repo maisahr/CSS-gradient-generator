@@ -7,6 +7,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
 
     const [output, setOutput] = useState('Hex');
     const [cssButton, setCssButton] = useState('Get CSS');
+    const [linkButton, setLinkButton] = useState('Get share link');
 
     const newValues = {
         ...values
@@ -53,6 +54,21 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
 
     }
 
+    const getShareLink = () => {
+        const link = new URL('http://localhost:3000/');
+        link.searchParams.append('gs', values.style);
+        link.searchParams.append('dir', values.direction);
+        link.searchParams.append('c1', values.colorOne);
+        link.searchParams.append('c2', values.colorTwo);
+
+        navigator.clipboard.writeText(link);
+        setLinkButton('Copied to clipboard!');
+
+        setTimeout(() => {
+            setLinkButton('Get share link');
+        }, 1500);
+    }
+
     return (
         <div className="sidebar">
             <h1>CSS GRADIENT GENERATOR</h1>
@@ -75,7 +91,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button onClick={() => setOutput('Rgb')}>Rgb</button>
 
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
-            <button className='getButton'>Get Share Link</button>
+            <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
         </div>
     )
 }
