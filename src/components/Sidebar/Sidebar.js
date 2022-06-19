@@ -1,4 +1,5 @@
 import { Directions } from '../Directions/Directions'
+import { hexGradient, rgbaGradient } from '../gradientCodes/gradientCodes'
 import './Sidebar.css'
 
 export const Sidebar = ({values, handleChange, handleRandom}) => {
@@ -51,8 +52,8 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button onClick={() => handleChangeRandom()}>Random</button>
 
             <h2>Output format</h2>
-            <button>Hex</button>
-            <button>Rgba</button>
+            <button onClick={() => hexGradient(values)}>Hex</button>
+            <button onClick={() => rgbaGradient(values)}>Rgb</button>
 
             <button className='getButton'>Get CSS</button>
             <button className='getButton'>Get Share Link</button>

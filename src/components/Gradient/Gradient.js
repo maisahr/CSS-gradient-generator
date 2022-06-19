@@ -5,6 +5,8 @@ export const Gradient = ({values}) => {
         values.direction = 'top left'
     }
 
+    
+
     return (
         <>
             <main className="gradient"></main>

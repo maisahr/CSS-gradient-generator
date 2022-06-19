@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { Gradient } from './components/Gradient/Gradient';
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -25,7 +25,6 @@ function App() {
   const [values, setValues] = useState(initialValues)
 
   const handleChange = (newValues) => {
-    console.log(newValues)
     setValues(newValues)
   }
 
