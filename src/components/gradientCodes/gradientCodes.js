@@ -14,9 +14,11 @@ export const hexGradient = (values) => {
     background: ${values.style}-gradient(${values.preposition + values.direction}, ${values.colorOne}, ${values.colorTwo});`
 
     navigator.clipboard.writeText(hexCode);
+
+    return hexCode;
 }
 
-export const rgbaGradient = (values) => {
+export const rgbGradient = (values) => {
     const rgbColorOne = hexToRgb(values.colorOne)
     const rgbColorTwo = hexToRgb(values.colorTwo)
 
@@ -26,5 +28,7 @@ export const rgbaGradient = (values) => {
     background: ${values.style}-gradient(${values.preposition + values.direction}, rgb${rgbColorOne}, rgb${rgbColorTwo});`
 
     navigator.clipboard.writeText(rgbCode);
+
+    return rgbCode;
 
 }

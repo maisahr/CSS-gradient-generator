@@ -1,8 +1,12 @@
+import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
-import { hexGradient, rgbaGradient } from '../gradientCodes/gradientCodes'
+import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
 import './Sidebar.css'
 
 export const Sidebar = ({values, handleChange, handleRandom}) => {
+
+    const [output, setOutput] = useState('Hex');
+    const [cssButton, setCssButton] = useState('Get CSS');
 
     const newValues = {
         ...values
@@ -34,6 +38,21 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
         handleChange(newValues)
     }
 
+    const getCSS = (output) => {
+        if(output === 'Hex') {
+            hexGradient(values);
+        } else {
+            rgbGradient(values);
+        }
+
+        setCssButton('Copied to clipboard!');
+
+        setTimeout(() => {
+            setCssButton('Get CSS');
+        }, 1500);
+
+    }
+
     return (
         <div className="sidebar">
             <h1>CSS GRADIENT GENERATOR</h1>
@@ -52,10 +71,10 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button onClick={() => handleChangeRandom()}>Random</button>
 
             <h2>Output format</h2>
-            <button onClick={() => hexGradient(values)}>Hex</button>
-            <button onClick={() => rgbaGradient(values)}>Rgb</button>
+            <button onClick={() => setOutput('Hex')}>Hex</button>
+            <button onClick={() => setOutput('Rgb')}>Rgb</button>
 
-            <button className='getButton'>Get CSS</button>
+            <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton'>Get Share Link</button>
         </div>
     )
