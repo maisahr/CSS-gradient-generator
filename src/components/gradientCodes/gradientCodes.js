@@ -8,10 +8,10 @@ const hexToRgb = (color) => {
 }
 
 export const hexGradient = (values) => {
-    const hexCode = `background: ${values.colorOne};
-    background: -webkit-${values.style}-gradient(${values.preposition + values.dir}, ${values.colorOne}, ${values.colorTwo});
-    background: -moz-${values.style}-gradient(${values.preposition + values.dir}, ${values.colorOne}, ${values.colorTwo});
-    background: ${values.style}-gradient(${values.preposition + values.dir}, ${values.colorOne}, ${values.colorTwo});`
+    const hexCode = `background: ${values.color1};
+    background: -webkit-${values.style}-gradient(${values.preposition + values.dir}, ${values.color1}, ${values.color2});
+    background: -moz-${values.style}-gradient(${values.preposition + values.dir}, ${values.color1}, ${values.color2});
+    background: ${values.style}-gradient(${values.preposition + values.dir}, ${values.color1}, ${values.color2});`
 
     navigator.clipboard.writeText(hexCode);
 
@@ -19,8 +19,8 @@ export const hexGradient = (values) => {
 }
 
 export const rgbGradient = (values) => {
-    const rgbColorOne = hexToRgb(values.colorOne)
-    const rgbColorTwo = hexToRgb(values.colorTwo)
+    const rgbColorOne = hexToRgb(values.color1)
+    const rgbColorTwo = hexToRgb(values.color2)
 
     const rgbCode = `background: ${rgbColorOne};
     background: -webkit-${values.style}-gradient(${values.preposition + values.dir}, rgb${rgbColorOne}, rgb${rgbColorTwo});

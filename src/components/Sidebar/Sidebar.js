@@ -24,18 +24,18 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
     }
 
     const handleChangeColorOne = (e) => {
-        newValues.colorOne = e.target.value;
+        newValues.color1 = e.target.value;
         handleChange(newValues)
     }
 
     const handleChangeColorTwo = (e) => {
-        newValues.colorTwo = e.target.value;
+        newValues.color2 = e.target.value;
         handleChange(newValues)
     }
 
     const handleChangeRandom = () => {
-        newValues.colorOne = handleRandom();
-        newValues.colorTwo = handleRandom();
+        newValues.color1 = handleRandom();
+        newValues.color2 = handleRandom();
         handleChange(newValues)
     }
 
@@ -56,10 +56,10 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
 
     const getShareLink = () => {
         const link = new URL('http://localhost:3000/');
-        link.searchParams.append('gs', values.style);
+        link.searchParams.append('style', values.style);
         link.searchParams.append('dir', values.dir);
-        link.searchParams.append('c1', values.colorOne);
-        link.searchParams.append('c2', values.colorTwo);
+        link.searchParams.append('c1', values.color1);
+        link.searchParams.append('c2', values.color2);
 
         navigator.clipboard.writeText(link);
         setLinkButton('Copied to clipboard!');
@@ -81,8 +81,8 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <Directions values={newValues} handleChange={handleChange}/>
 
             <h2>Colors</h2>
-            <input type='color' value={newValues.colorOne} onChange={handleChangeColorOne}></input>
-            <input type='color' value={newValues.colorTwo} onChange={handleChangeColorTwo}></input>
+            <input type='color' value={newValues.color1} onChange={handleChangeColorOne}></input>
+            <input type='color' value={newValues.color2} onChange={handleChangeColorTwo}></input>
             
             <button onClick={() => handleChangeRandom()}>Random</button>
 

@@ -12,7 +12,7 @@ export const Gradient = ({values}) => {
             <main className="gradient"></main>
             <style>{`
                     .gradient {
-                        background-image: ${values.style}-gradient(${values.preposition + values.dir}, ${values.colorOne}, ${values.colorTwo});
+                        background-image: ${values.style}-gradient(${values.preposition + values.dir}, ${values.color1}, ${values.color2});
                     }
             `}</style>
         </>

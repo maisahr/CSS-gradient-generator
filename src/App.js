@@ -18,8 +18,8 @@ function App() {
     style: 'linear',
     dir: 'top left',
     preposition: 'to ',
-    colorOne: generateRandomColor(),
-    colorTwo: generateRandomColor()
+    color1: generateRandomColor(),
+    color2: generateRandomColor()
   }
 
 
