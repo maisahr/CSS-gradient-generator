@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { Gradient } from './components/Gradient/Gradient';
 import { Sidebar } from './components/Sidebar/Sidebar';
+import { Templates } from './components/Templates/Templates';
 
 function App() {
 
@@ -47,10 +48,11 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar values={values} handleChange={handleChange} handleRandom={generateRandomColor}>
-      </Sidebar>
-      <Gradient values={values}>
-      </Gradient>
+      <Sidebar values={values} handleChange={handleChange} handleRandom={generateRandomColor}/>
+      <main>
+        <Gradient values={values}/>
+        <Templates></Templates>
+      </main>
     </div>
   );
 }

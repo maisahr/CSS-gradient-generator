@@ -1,0 +1,31 @@
+.templates {
+    width:100%;
+    height: 100vh;
+}
+
+#template1 {
+    width: 33%;
+    height: 70%;
+    background: #1d7dd8;
+    background: -webkit-linear-gradient(to bottom right, #1d7dd8, #6fcc06);
+    background: -moz-linear-gradient(to bottom right, #1d7dd8, #6fcc06);
+    background: linear-gradient(to bottom right, #1d7dd8, #6fcc06);
+}
+
+#template2 {
+    width: 33%;
+    height: 70%;
+    background: #7825cf;
+    background: -webkit-linear-gradient(to bottom right, #7825cf, #457771);
+    background: -moz-linear-gradient(to bottom right, #7825cf, #457771);
+    background: linear-gradient(to bottom right, #7825cf, #457771);
+}
+
+#template3 {
+    width: 33%;
+    height: 70%;
+    background: #f9838b;
+    background: -webkit-linear-gradient(to bottom right, #f9838b, #9a70a0);
+    background: -moz-linear-gradient(to bottom right, #f9838b, #9a70a0);
+    background: linear-gradient(to bottom right, #f9838b, #9a70a0);
+}
