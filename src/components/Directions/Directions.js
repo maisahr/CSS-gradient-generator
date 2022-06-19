@@ -1,3 +1,4 @@
+import './Directions.css'
 export const Directions = ({values, handleChange}) => {
 
     const handleChangeDirection = (direction, id) => {
@@ -9,7 +10,7 @@ export const Directions = ({values, handleChange}) => {
     }
 
     return(
-        <>
+        <div className="directions">
             <style>{`
                 #${values.style}, #${values.dirId} {
                     background-color: #f1f4f8;
@@ -25,6 +26,6 @@ export const Directions = ({values, handleChange}) => {
             <button id='arrow6' onClick={() => handleChangeDirection('bottom left', 'arrow6')}>&#8601;</button>
             <button id='arrow7' onClick={() => handleChangeDirection('bottom', 'arrow7')}>&#8595;</button>
             <button id='arrow8' onClick={() => handleChangeDirection('bottom right', 'arrow8')}>&#8600;</button>
-        </>
+        </div>
     )
 }
