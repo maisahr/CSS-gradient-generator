@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
+import { TemplateModal } from '../TemplateModal/TemplateModal'
 import './Sidebar.css'
 
-export const Sidebar = ({values, handleChange, handleRandom}) => {
-
+export const Sidebar = ({values, handleChange, handleRandom, updateTemplates}) => {
+    const [isOpen, setIsOpen] = useState(false);
     const [output, setOutput] = useState('hex');
     const [cssButton, setCssButton] = useState('Get CSS');
     const [linkButton, setLinkButton] = useState('Get share link');
+    const [saveButton, setSaveButton] = useState('Save template')
 
     const newValues = {
         ...values
@@ -37,6 +39,16 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
         newValues.color1 = handleRandom();
         newValues.color2 = handleRandom();
         handleChange(newValues)
+    }
+
+    const saveTemplate = () => {
+        setIsOpen(true);
+
+        setSaveButton('Template saved!');
+
+        setTimeout(() => {
+            setSaveButton('Save template');
+        }, 1500);
     }
 
     const getCSS = (output) => {
@@ -98,8 +110,10 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button id='hex' onClick={() => setOutput('hex')}>Hex</button>
             <button id='rgb' onClick={() => setOutput('rgb')}>Rgb</button>
 
+            <button className='getButton' onClick={() => saveTemplate()}>{saveButton}</button>
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
+            <TemplateModal open={isOpen} onClose={() => setIsOpen(false)} values={values} updateTemplates={updateTemplates}/>
         </div>
     )
 }
