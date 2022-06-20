@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
+import { TemplateModal } from '../TemplateModal/TemplateModal'
 import './Sidebar.css'
 
 export const Sidebar = ({values, handleChange, handleRandom}) => {
-
+    const [isOpen, setIsOpen] = useState(false);
     const [output, setOutput] = useState('hex');
     const [cssButton, setCssButton] = useState('Get CSS');
     const [linkButton, setLinkButton] = useState('Get share link');
@@ -41,6 +42,8 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
     }
 
     const saveTemplate = () => {
+        setIsOpen(true);
+
         setSaveButton('Template saved!');
 
         setTimeout(() => {
@@ -110,6 +113,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button className='getButton' onClick={() => saveTemplate()}>{saveButton}</button>
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
+            <TemplateModal open={isOpen} onClose={() => setIsOpen(false)}/>
         </div>
     )
 }
