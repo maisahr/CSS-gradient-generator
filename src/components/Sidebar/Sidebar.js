@@ -8,6 +8,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
     const [output, setOutput] = useState('hex');
     const [cssButton, setCssButton] = useState('Get CSS');
     const [linkButton, setLinkButton] = useState('Get share link');
+    const [saveButton, setSaveButton] = useState('Save template')
 
     const newValues = {
         ...values
@@ -37,6 +38,14 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
         newValues.color1 = handleRandom();
         newValues.color2 = handleRandom();
         handleChange(newValues)
+    }
+
+    const saveTemplate = () => {
+        setSaveButton('Template saved!');
+
+        setTimeout(() => {
+            setSaveButton('Save template');
+        }, 1500);
     }
 
     const getCSS = (output) => {
@@ -98,6 +107,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button id='hex' onClick={() => setOutput('hex')}>Hex</button>
             <button id='rgb' onClick={() => setOutput('rgb')}>Rgb</button>
 
+            <button className='getButton' onClick={() => saveTemplate()}>{saveButton}</button>
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
         </div>

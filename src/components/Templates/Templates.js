@@ -17,6 +17,10 @@ export const Templates = () => {
                     <figure id='template3'></figure>
                     <figcaption>"Template" by user</figcaption>
                 </div>
+                <div className='template'>
+                    <figure id='template4'></figure>
+                    <figcaption>"Template" by user</figcaption>
+                </div>
             </div>
         </section>
     )
