@@ -113,7 +113,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button className='getButton' onClick={() => saveTemplate()}>{saveButton}</button>
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
-            <TemplateModal open={isOpen} onClose={() => setIsOpen(false)}/>
+            <TemplateModal open={isOpen} onClose={() => setIsOpen(false)} values={values}/>
         </div>
     )
 }
