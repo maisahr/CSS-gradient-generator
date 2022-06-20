@@ -7,13 +7,15 @@ export const TemplateModal = ({open, onClose}) => {
     return ReactDOM.createPortal(
         <div className="background">
             <section className="modal">
-                <button onClick={onClose}>X</button>
+                <button onClick={onClose} className='closeButton'>X</button>
                 <form>
                     <label htmlFor="templateName">Template's name:</label>
-                    <input type='text' id='templateName'></input>
+                    <input type='text' id='templateName' className="formInput"></input>
+
                     <label htmlFor="username">Created by:</label>
-                    <input type='text' id='username'></input>
+                    <input type='text' id='username' className="formInput"></input>
                 </form>
+                <button className="getButton">Save</button>
             </section>
         </div>,
         document.getElementById('portal')

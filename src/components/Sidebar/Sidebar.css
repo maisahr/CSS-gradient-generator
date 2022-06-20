@@ -50,6 +50,11 @@ button:hover {
     font-weight: 600;
 }
 
+.getButton:hover{
+    background-color: #3d4853;
+    color: white;
+}
+
 input {
     border: none;
 }
