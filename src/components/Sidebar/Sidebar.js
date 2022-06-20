@@ -4,7 +4,7 @@ import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
 import { TemplateModal } from '../TemplateModal/TemplateModal'
 import './Sidebar.css'
 
-export const Sidebar = ({values, handleChange, handleRandom}) => {
+export const Sidebar = ({values, handleChange, handleRandom, updateTemplates}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [output, setOutput] = useState('hex');
     const [cssButton, setCssButton] = useState('Get CSS');
@@ -113,7 +113,7 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <button className='getButton' onClick={() => saveTemplate()}>{saveButton}</button>
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
-            <TemplateModal open={isOpen} onClose={() => setIsOpen(false)} values={values}/>
+            <TemplateModal open={isOpen} onClose={() => setIsOpen(false)} values={values} updateTemplates={updateTemplates}/>
         </div>
     )
 }

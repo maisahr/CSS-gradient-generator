@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Templates.css'
 
-export const Templates = () => {
+export const Templates = ({updateTemplates}) => {
 
     const [templates, setTemplates] = useState()
 
@@ -14,7 +14,8 @@ export const Templates = () => {
                 console.log(templates);
                 setTemplates(templates);
             })
-    }, []);
+            .catch((res) => console.log(res));
+    }, [updateTemplates]);
 
     return(
         <section className="templatesSection">

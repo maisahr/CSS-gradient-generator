@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import './TemplateModal.css'
-export const TemplateModal = ({open, onClose, values}) => {
+export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
 
     if(!open) return null;
 
@@ -29,6 +29,7 @@ export const TemplateModal = ({open, onClose, values}) => {
         fetch('https://62b088c7196a9e987025de3c.mockapi.io/templates', requestOptions)
             .then(response => {
                 response.json();
+                updateTemplates();
                 onClose();
             })
             .catch(res => console.log(res))

@@ -46,12 +46,22 @@ function App() {
     setValues(newValues)
   }
 
+  const [updateTemplates, setUpdateTemplates] = useState(0);
+
+  const handleUpdate = () => {
+    setUpdateTemplates(updateTemplates + 1)
+  }
+
   return (
     <div className="App">
-      <Sidebar values={values} handleChange={handleChange} handleRandom={generateRandomColor}/>
+      <Sidebar values={values} 
+        handleChange={handleChange} 
+        handleRandom={generateRandomColor} 
+        updateTemplates={handleUpdate}
+      />
       <main>
         <Gradient values={values}/>
-        <Templates></Templates>
+        <Templates updateTemplates={updateTemplates}></Templates>
       </main>
     </div>
   );
