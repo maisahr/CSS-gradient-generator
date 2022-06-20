@@ -31,6 +31,9 @@ export const Templates = ({updateTemplates}) => {
                                     #${'template' + template.id} {
                                         background-image: ${values.style}-gradient(${values.preposition + values.dir}, ${values.color1}, ${values.color2});
                                     }
+                                    #${'template' + template.id}:hover {
+                                        border: 2px solid #3d4853;
+                                    }
                             `}</style>
                         </div>
                         
