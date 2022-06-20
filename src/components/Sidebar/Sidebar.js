@@ -1,7 +1,13 @@
+import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
+import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
 import './Sidebar.css'
 
 export const Sidebar = ({values, handleChange, handleRandom}) => {
+
+    const [output, setOutput] = useState('hex');
+    const [cssButton, setCssButton] = useState('Get CSS');
+    const [linkButton, setLinkButton] = useState('Get share link');
 
     const newValues = {
         ...values
@@ -18,23 +24,60 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
     }
 
     const handleChangeColorOne = (e) => {
-        newValues.colorOne = e.target.value;
+        newValues.color1 = e.target.value;
         handleChange(newValues)
     }
 
     const handleChangeColorTwo = (e) => {
-        newValues.colorTwo = e.target.value;
+        newValues.color2 = e.target.value;
         handleChange(newValues)
     }
 
     const handleChangeRandom = () => {
-        newValues.colorOne = handleRandom();
-        newValues.colorTwo = handleRandom();
+        newValues.color1 = handleRandom();
+        newValues.color2 = handleRandom();
         handleChange(newValues)
+    }
+
+    const getCSS = (output) => {
+        if(output === 'hex') {
+            hexGradient(values);
+        } else {
+            rgbGradient(values);
+        }
+
+        setCssButton('Copied to clipboard!');
+
+        setTimeout(() => {
+            setCssButton('Get CSS');
+        }, 1500);
+
+    }
+
+    const getShareLink = () => {
+        const link = new URL(window.location.host);
+        link.searchParams.append('style', values.style);
+        link.searchParams.append('dir', values.dir);
+        link.searchParams.append('dirId', values.dirId);
+        link.searchParams.append('color1', values.color1);
+        link.searchParams.append('color2', values.color2);
+
+        navigator.clipboard.writeText(link);
+        setLinkButton('Copied to clipboard!');
+
+        setTimeout(() => {
+            setLinkButton('Get share link');
+        }, 1500);
     }
 
     return (
         <div className="sidebar">
+            <style>{`
+                #${output} {
+                    background-color: #f1f4f8;
+                }
+            `}</style>
+
             <h1>CSS GRADIENT GENERATOR</h1>
 
             <h2>Style</h2>
@@ -45,17 +88,18 @@ export const Sidebar = ({values, handleChange, handleRandom}) => {
             <Directions values={newValues} handleChange={handleChange}/>
 
             <h2>Colors</h2>
-            <input type='color' value={newValues.colorOne} onChange={handleChangeColorOne}></input>
-            <input type='color' value={newValues.colorTwo} onChange={handleChangeColorTwo}></input>
-            
-            <button onClick={() => handleChangeRandom()}>Random</button>
+            <div className='colors'>    
+                <input type='color' value={newValues.color1} onChange={handleChangeColorOne}></input>
+                <input type='color' value={newValues.color2} onChange={handleChangeColorTwo}></input>
+                <button onClick={() => handleChangeRandom()}>Random</button>
+            </div>
 
             <h2>Output format</h2>
-            <button>Hex</button>
-            <button>Rgba</button>
+            <button id='hex' onClick={() => setOutput('hex')}>Hex</button>
+            <button id='rgb' onClick={() => setOutput('rgb')}>Rgb</button>
 
-            <button className='getButton'>Get CSS</button>
-            <button className='getButton'>Get Share Link</button>
+            <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
+            <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
         </div>
     )
 }

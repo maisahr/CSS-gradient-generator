@@ -15,24 +15,47 @@ h2 {
     font-size: 1rem;
 }
 
+.colors {
+    display: flex;
+}
+
+button, input {
+    width: 5rem;
+    height: 2rem;
+    margin: 1%;
+}
+
 button {
     font-family: 'Poppins', sans-serif;
     background-color: white;
     border: solid #f1f4f8;
     border-radius: 0.5rem;
-    width: 5rem;
-    height: 2rem;
-    margin: 1%;
     color: #3d4853;
+}
+
+button:hover {
+    background-color: #f1f4f8;
+    cursor: pointer;
 }
 
 .getButton {
     background-color: #f1f4f8;
-    width: 16rem;
+    width: 100%;
     height: 3rem;
+    margin-top: 5%;
     font-weight: 600;
 }
 
 input {
-    border-style: none;
+    border: none;
+}
+
+input::-webkit-color-swatch {
+    border-radius: 0.25rem;
+    border: none;
+}
+
+input::-moz-color-swatch {
+    border-radius: 0.25rem;
+    border: none;
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { Gradient } from './components/Gradient/Gradient';
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -14,18 +14,34 @@ function App() {
     return randomColor;
   }
 
-  const initialValues = {
+  let initialValues = {
     style: 'linear',
-    direction: 'top left',
+    dir: 'top left',
+    dirId: 'arrow1',
     preposition: 'to ',
-    colorOne: generateRandomColor(),
-    colorTwo: generateRandomColor()
+    color1: generateRandomColor(),
+    color2: generateRandomColor()
+  }
+
+  if(window.location.href.includes('?')) {
+    const link = new URLSearchParams(window.location.href);
+    const entries = link.entries();
+
+    for(const [key, value] of entries) {
+      initialValues[key.slice(key.indexOf('?')+1)] = value;
+    }
+
+    initialValues.preposition = initialValues.style === 'linear' ? 'to ' : 'at '
   }
 
   const [values, setValues] = useState(initialValues)
 
+  if(values.style === 'linear' && values.dir === 'center') {
+    values.dir = 'top left'
+    values.dirId = 'arrow1'
+  }
+
   const handleChange = (newValues) => {
-    console.log(newValues)
     setValues(newValues)
   }
 
