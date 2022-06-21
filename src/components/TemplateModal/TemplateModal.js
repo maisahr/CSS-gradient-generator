@@ -42,12 +42,12 @@ export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
                 <button onClick={onClose} className='closeButton'>X</button>
                 <form>
                     <label htmlFor="templateName">Template's name:</label>
-                    <input type='text' name='template' className="formInput" onChange={handleChangeTemplate}></input>
+                    <input type='text' name='template' className="formInput" onChange={handleChangeTemplate} required></input>
 
                     <label htmlFor="username">Created by:</label>
-                    <input type='text' name='username' className="formInput" onChange={handleChangeUser}></input>
+                    <input type='text' name='username' className="formInput" onChange={handleChangeUser} required></input>
+                    <button className="getButton" onSubmit={() => saveTemplate(template, user, values)}>Save</button>
                 </form>
-                <button className="getButton" onClick={() => saveTemplate(template, user, values)}>Save</button>
             </section>
         </div>,
         document.getElementById('portal')
