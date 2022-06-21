@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
-import { hexGradient, rgbGradient } from '../gradientCodes/gradientCodes'
+import { generateRandomColor } from '../../utils/randomColor'
+import { hexGradient, rgbGradient } from '../../utils/gradientCodes'
 import { TemplateModal } from '../TemplateModal/TemplateModal'
 import './Sidebar.css'
 
-export const Sidebar = ({values, handleChange, handleRandom, updateTemplates}) => {
+export const Sidebar = ({values, handleChange, updateTemplates}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [output, setOutput] = useState('hex');
     const [cssButton, setCssButton] = useState('Get CSS');
@@ -25,19 +26,16 @@ export const Sidebar = ({values, handleChange, handleRandom, updateTemplates}) =
         handleChange(newValues)
     }
 
-    const handleChangeColorOne = (e) => {
-        newValues.color1 = e.target.value;
-        handleChange(newValues)
-    }
-
-    const handleChangeColorTwo = (e) => {
-        newValues.color2 = e.target.value;
+    const handleChangeColor = (e) => {
+        const { target } = e;
+        const { name, value } = target;
+        newValues[name] = value;
         handleChange(newValues)
     }
 
     const handleChangeRandom = () => {
-        newValues.color1 = handleRandom();
-        newValues.color2 = handleRandom();
+        newValues.color1 = generateRandomColor();
+        newValues.color2 = generateRandomColor();
         handleChange(newValues)
     }
 
@@ -101,8 +99,8 @@ export const Sidebar = ({values, handleChange, handleRandom, updateTemplates}) =
 
             <h2>Colors</h2>
             <div className='colors'>    
-                <input type='color' value={newValues.color1} onChange={handleChangeColorOne}></input>
-                <input type='color' value={newValues.color2} onChange={handleChangeColorTwo}></input>
+                <input type='color' name='color1' value={newValues.color1} onChange={handleChangeColor}></input>
+                <input type='color' name='color2' value={newValues.color2} onChange={handleChangeColor}></input>
                 <button onClick={() => handleChangeRandom()}>Random</button>
             </div>
 
@@ -113,7 +111,12 @@ export const Sidebar = ({values, handleChange, handleRandom, updateTemplates}) =
             <button className='getButton' onClick={() => saveTemplate()}>{saveButton}</button>
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
-            <TemplateModal open={isOpen} onClose={() => setIsOpen(false)} values={values} updateTemplates={updateTemplates}/>
+            
+            <TemplateModal open={isOpen} 
+                onClose={() => setIsOpen(false)} 
+                values={values} 
+                updateTemplates={updateTemplates}
+            />
         </div>
     )
 }
