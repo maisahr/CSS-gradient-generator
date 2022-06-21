@@ -82,6 +82,10 @@ input::-moz-color-swatch {
         font-size: 0.7rem;
     }
 
+    button, input {
+        width: 45%;
+    }
+
     .colors {
         display: block;
     }
