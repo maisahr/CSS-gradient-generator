@@ -23,7 +23,7 @@ export const Templates = ({updateTemplates, handleChange}) => {
             })
             .then((templates) => {
                 console.log(templates);
-                setTemplates(templates);
+                setTemplates(templates.reverse());
             })
             .catch((res) => console.log(res));
     }, [updateTemplates]);
