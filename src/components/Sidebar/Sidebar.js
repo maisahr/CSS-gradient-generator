@@ -1,16 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import { generateRandomColor } from '../../utils/randomColor'
 import { hexGradient, rgbGradient } from '../../utils/gradientCodes'
 import { TemplateModal } from '../TemplateModal/TemplateModal'
 import './Sidebar.css'
 
-export const Sidebar = ({values, handleChange, updateTemplates}) => {
+export const Sidebar = ({values, handleChange, updateTemplates, templatesChange}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [output, setOutput] = useState('hex');
     const [cssButton, setCssButton] = useState('Get CSS');
     const [linkButton, setLinkButton] = useState('Get share link');
     const [saveButton, setSaveButton] = useState('Save template')
+
+    useEffect(() => {
+        setSaveButton('Template saved!');
+
+        setTimeout(() => {
+            setSaveButton('Save template');
+        }, 1500);
+
+    }, [templatesChange]);
 
     const newValues = {
         ...values
@@ -37,16 +46,6 @@ export const Sidebar = ({values, handleChange, updateTemplates}) => {
         newValues.color1 = generateRandomColor();
         newValues.color2 = generateRandomColor();
         handleChange(newValues)
-    }
-
-    const saveTemplate = () => {
-        setIsOpen(true);
-
-        setSaveButton('Template saved!');
-
-        setTimeout(() => {
-            setSaveButton('Save template');
-        }, 1500);
     }
 
     const getCSS = (output) => {
@@ -108,7 +107,7 @@ export const Sidebar = ({values, handleChange, updateTemplates}) => {
             <button id='hex' onClick={() => setOutput('hex')}>Hex</button>
             <button id='rgb' onClick={() => setOutput('rgb')}>Rgb</button>
 
-            <button className='getButton' onClick={() => saveTemplate()}>{saveButton}</button>
+            <button className='getButton' onClick={() => setIsOpen(true)}>{saveButton}</button>
             <button className='getButton' onClick={() => getCSS(output)}>{cssButton}</button>
             <button className='getButton' onClick={() => getShareLink()}>{linkButton}</button>
             
