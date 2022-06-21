@@ -50,7 +50,7 @@ button:hover {
     font-weight: 600;
 }
 
-.getButton:hover{
+.getButton:hover:enabled{
     background-color: #3d4853;
     color: white;
 }

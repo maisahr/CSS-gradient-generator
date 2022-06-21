@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Directions } from '../Directions/Directions'
 import { generateRandomColor } from '../../utils/randomColor'
 import { hexGradient, rgbGradient } from '../../utils/gradientCodes'

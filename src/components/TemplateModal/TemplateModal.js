@@ -1,22 +1,21 @@
+import { useState } from "react";
 import ReactDOM from "react-dom";
 import './TemplateModal.css'
 export const TemplateModal = ({open, onClose, values, updateTemplates, changeButtonText}) => {
+    const [templateName, setTemplateName] = useState();
+    const [username, setUsername] = useState()
 
     if(!open) return null;
 
-    let user = '';
-    let template = '';
-
     const handleChangeUser = (e) => {
-        user = e.target.value;
+        setUsername(e.target.value);
     }
 
     const handleChangeTemplate = (e) => {
-        template = e.target.value;
+        setTemplateName(e.target.value);
     }
 
     const saveTemplate = (template, user, values) => {
-
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -32,6 +31,8 @@ export const TemplateModal = ({open, onClose, values, updateTemplates, changeBut
                 response.json();
                 updateTemplates();
                 onClose();
+                setUsername(null);
+                setTemplateName(null);
                 changeButtonText();
             })
             .catch(res => console.log(res))
@@ -48,9 +49,9 @@ export const TemplateModal = ({open, onClose, values, updateTemplates, changeBut
 
                     <label htmlFor="username">Created by:</label>
                     <input type='text' name='username' className="formInput" onChange={handleChangeUser}></input>
-                    <button className="getButton" onClick={(e) => {
+                    <button className="getButton" disabled={!username || !templateName} onClick={(e) => {
                         e.preventDefault(); 
-                        saveTemplate(template, user, values);
+                        saveTemplate(templateName, username, values);
                     }}>Save</button>
 
                 </form>
