@@ -1,11 +1,9 @@
-import './Gradient.css'
-export const Gradient = ({values}) => {
+export const Gradient = ({values, selector}) => {
 
     return (
         <>
-            <section className="gradient"></section>
             <style>{`
-                    .gradient {
+                    ${selector} {
                         background-image: ${values.style}-gradient(${values.preposition + values.dir}, ${values.color1}, ${values.color2});
                     }
             `}</style>

@@ -1,19 +1,11 @@
 import { useState } from 'react';
 import './App.css';
+import { generateRandomColor } from './utils/randomColor';
 import { Gradient } from './components/Gradient/Gradient';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Templates } from './components/Templates/Templates';
 
 function App() {
-
-  const generateRandomColor = () => {
-    let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-    if(randomColor.length !== 7){
-      const missing = 7 - randomColor.length;
-      randomColor = randomColor + '0'.repeat(missing);
-    }
-    return randomColor;
-  }
 
   let initialValues = {
     style: 'linear',
@@ -48,20 +40,19 @@ function App() {
 
   const [updateTemplates, setUpdateTemplates] = useState(0);
 
-  const handleUpdate = () => {
-    setUpdateTemplates(updateTemplates + 1)
-  }
-
   return (
     <div className="App">
       <Sidebar values={values} 
-        handleChange={handleChange} 
-        handleRandom={generateRandomColor} 
-        updateTemplates={handleUpdate}
+        handleChange={handleChange}  
+        updateTemplates={() => setUpdateTemplates(updateTemplates + 1)}
       />
       <main>
-        <Gradient values={values}/>
-        <Templates updateTemplates={updateTemplates}></Templates>
+        <section className="gradient">
+          <Gradient values={values} selector={'.gradient'}/>
+        </section>
+        <Templates updateTemplates={updateTemplates} 
+          handleChange={handleChange}
+        />
       </main>
     </div>
   );
