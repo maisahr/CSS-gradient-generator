@@ -1,6 +1,6 @@
 .templatesSection {
     width: 95%;
-    height: 100vh;
+    height: 100%;
     margin: 5% 0 0 5%;
 }
 
@@ -9,7 +9,7 @@
     grid-template-columns: repeat(3, 30%);
     grid-row-gap: 1.5rem;
     justify-content: space-between;
-    margin-right: 5%;
+    margin: 0 5% 5% 0;
 }
 
 .template {
