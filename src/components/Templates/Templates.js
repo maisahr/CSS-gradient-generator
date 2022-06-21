@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react';
 import './Templates.css'
 
-export const Templates = ({updateTemplates}) => {
+export const Templates = ({updateTemplates, handleChange}) => {
 
     const [templates, setTemplates] = useState()
+
+    const renderTemplate = (values) => {
+        handleChange(values);
+    
+        window.scroll({
+            top:0,
+            left:0,
+            behavior:"smooth"
+        });
+    }
 
     useEffect(() => {
         fetch('https://62b088c7196a9e987025de3c.mockapi.io/templates')
@@ -25,7 +35,7 @@ export const Templates = ({updateTemplates}) => {
                     const values = template.values;
                     return(
                         <div className='template' key={template.id}>
-                            <figure className='oneTemplate' id={'template' + template.id}></figure>
+                            <figure className='oneTemplate' id={'template' + template.id} onClick={() => renderTemplate(values)}></figure>
                             <figcaption>"{template.template}" by {template.username}</figcaption>
                             <style>{`
                                     #${'template' + template.id} {
@@ -36,7 +46,6 @@ export const Templates = ({updateTemplates}) => {
                                     }
                             `}</style>
                         </div>
-                        
                     )
                 })}
             </div>

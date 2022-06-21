@@ -61,7 +61,9 @@ function App() {
       />
       <main>
         <Gradient values={values}/>
-        <Templates updateTemplates={updateTemplates}></Templates>
+        <Templates updateTemplates={updateTemplates} 
+          handleChange={handleChange}
+        />
       </main>
     </div>
   );
