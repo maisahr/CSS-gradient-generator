@@ -12,14 +12,13 @@ export const Sidebar = ({values, handleChange, updateTemplates, templatesChange}
     const [linkButton, setLinkButton] = useState('Get share link');
     const [saveButton, setSaveButton] = useState('Save template')
 
-    useEffect(() => {
+    const changeSaveButtonTxt = () => {
         setSaveButton('Template saved!');
 
         setTimeout(() => {
             setSaveButton('Save template');
         }, 1500);
-
-    }, [templatesChange]);
+    }
 
     const newValues = {
         ...values
@@ -115,6 +114,7 @@ export const Sidebar = ({values, handleChange, updateTemplates, templatesChange}
                 onClose={() => setIsOpen(false)} 
                 values={values} 
                 updateTemplates={updateTemplates}
+                changeButtonText={changeSaveButtonTxt}
             />
         </div>
     )

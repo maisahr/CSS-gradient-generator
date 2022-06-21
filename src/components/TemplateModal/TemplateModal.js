@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import './TemplateModal.css'
-export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
+export const TemplateModal = ({open, onClose, values, updateTemplates, changeButtonText}) => {
 
     if(!open) return null;
 
@@ -32,6 +32,7 @@ export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
                 response.json();
                 updateTemplates();
                 onClose();
+                changeButtonText();
             })
             .catch(res => console.log(res))
     }
