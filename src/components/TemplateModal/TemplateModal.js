@@ -4,26 +4,15 @@ import './TemplateModal.css'
 export const TemplateModal = ({open, onClose, values, updateTemplates, changeButtonText}) => {
     const [templateName, setTemplateName] = useState();
     const [username, setUsername] = useState()
-/*     const [saveButtonText, setSaveButtonText] = useState('Please add template and creator names'); */
 
     if(!open) return null;
 
     const handleChangeUser = (e) => {
         setUsername(e.target.value);
-/*         if(username.length > 0 && templateName.length > 0){
-            setSaveButtonText('Save template')
-        } else if (username.length === 0 || templateName.length === 0){
-            setSaveButtonText('Please add template and creator names')
-        } */
     }
 
     const handleChangeTemplate = (e) => {
         setTemplateName(e.target.value);
-/*         if(username.length > 0 && templateName.length > 0){
-            setSaveButtonText('Save template')
-        } else if (username.length === 0 || templateName.length === 0){
-            setSaveButtonText('Please add template and creator names')
-        } */
     }
 
     const saveTemplate = (template, user, values) => {
