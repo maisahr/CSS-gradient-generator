@@ -1,18 +1,29 @@
+import { useState } from "react";
 import ReactDOM from "react-dom";
 import './TemplateModal.css'
-export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
+export const TemplateModal = ({open, onClose, values, updateTemplates, changeButtonText}) => {
+    const [templateName, setTemplateName] = useState();
+    const [username, setUsername] = useState()
+/*     const [saveButtonText, setSaveButtonText] = useState('Please add template and creator names'); */
 
     if(!open) return null;
 
-    let user = '';
-    let template = '';
-
     const handleChangeUser = (e) => {
-        user = e.target.value;
+        setUsername(e.target.value);
+/*         if(username.length > 0 && templateName.length > 0){
+            setSaveButtonText('Save template')
+        } else if (username.length === 0 || templateName.length === 0){
+            setSaveButtonText('Please add template and creator names')
+        } */
     }
 
     const handleChangeTemplate = (e) => {
-        template = e.target.value;
+        setTemplateName(e.target.value);
+/*         if(username.length > 0 && templateName.length > 0){
+            setSaveButtonText('Save template')
+        } else if (username.length === 0 || templateName.length === 0){
+            setSaveButtonText('Please add template and creator names')
+        } */
     }
 
     const saveTemplate = (template, user, values) => {
@@ -31,6 +42,9 @@ export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
                 response.json();
                 updateTemplates();
                 onClose();
+                setUsername(undefined);
+                setTemplateName(undefined);
+                changeButtonText();
             })
             .catch(res => console.log(res))
     }
@@ -46,8 +60,12 @@ export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
 
                     <label htmlFor="username">Created by:</label>
                     <input type='text' name='username' className="formInput" onChange={handleChangeUser}></input>
+                    <button className="getButton" disabled={!username || !templateName} onClick={(e) => {
+                        e.preventDefault(); 
+                        saveTemplate(templateName, username, values);
+                    }}>Save</button>
+
                 </form>
-                <button className="getButton" onClick={() => saveTemplate(template, user, values)}>Save</button>
             </section>
         </div>,
         document.getElementById('portal')
