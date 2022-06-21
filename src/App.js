@@ -48,7 +48,7 @@ function App() {
       />
       <main>
         <section className="gradient">
-          <Gradient values={values}/>
+          <Gradient values={values} selector={'.gradient'}/>
         </section>
         <Templates updateTemplates={updateTemplates} 
           handleChange={handleChange}

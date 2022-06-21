@@ -1,4 +1,3 @@
-import './Directions.css'
 export const Directions = ({values, handleChange}) => {
 
     const handleChangeDirection = (direction, id) => {
