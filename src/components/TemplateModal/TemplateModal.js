@@ -16,6 +16,7 @@ export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
     }
 
     const saveTemplate = (template, user, values) => {
+
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -42,11 +43,15 @@ export const TemplateModal = ({open, onClose, values, updateTemplates}) => {
                 <button onClick={onClose} className='closeButton'>X</button>
                 <form>
                     <label htmlFor="templateName">Template's name:</label>
-                    <input type='text' name='template' className="formInput" onChange={handleChangeTemplate} required></input>
+                    <input type='text' name='template' className="formInput" onChange={handleChangeTemplate}></input>
 
                     <label htmlFor="username">Created by:</label>
-                    <input type='text' name='username' className="formInput" onChange={handleChangeUser} required></input>
-                    <button className="getButton" onSubmit={() => saveTemplate(template, user, values)}>Save</button>
+                    <input type='text' name='username' className="formInput" onChange={handleChangeUser}></input>
+                    <button className="getButton" onClick={(e) => {
+                        e.preventDefault(); 
+                        saveTemplate(template, user, values);
+                    }}>Save</button>
+
                 </form>
             </section>
         </div>,
