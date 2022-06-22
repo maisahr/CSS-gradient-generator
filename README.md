@@ -2,7 +2,7 @@
 
 ## Project description
 
-This project is a responsive CSS gradient generator made with React, that allows the user to choose style (linear or radial), direction, and two colors (or random choice), and renders the created gradient. Users can get the CSS code in the chosen output format (hex or rgb), and a share link of the template. They can also save templates, identified by the name and who created it; this saved templates are public for everyone to see or use. 
+Based on [Stefano Merlo's CSS Gradient Generator](https://www.css-gradient.com/), this project is a responsive CSS gradient generator made with React, that allows the user to choose style (linear or radial), direction, and two colors (or random choice), and renders the created gradient. Users can get the CSS code in the chosen output format (hex or rgb), and a share link of the template. They can also save templates, identified by the name and who created it; this saved templates are public for everyone to see or use. 
 
 ## Tech stack
 
@@ -22,4 +22,5 @@ Link to the deployed project: https://62b259f7fafbbb027c5b5dd3--resplendent-blin
 ## Author
 
 | Developer | Contact | 
+| ------------- | ------------- |
 | Ma. Isabela Huitrón | [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/maisahr/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/maisahr) |
