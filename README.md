@@ -14,7 +14,7 @@ Based on [Stefano Merlo's CSS Gradient Generator](https://www.css-gradient.com/)
 
 ## Deployed project
 
-Link to the deployed project: https://62b259f7fafbbb027c5b5dd3--resplendent-blini-1fd4c8.netlify.app/
+Link to the deployed project: https://maisahr-css-gradient-generator.netlify.app/
 
 ![Main screen](./src/assets/cssGradient.png)
 ![Templates screen](./src/assets/templates.png)
