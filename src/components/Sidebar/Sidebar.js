@@ -63,7 +63,7 @@ export const Sidebar = ({values, handleChange, updateTemplates, templatesChange}
     }
 
     const getShareLink = () => {
-        const link = new URL(window.location.host);
+        const link = new URL(window.location.href);
         link.searchParams.append('style', values.style);
         link.searchParams.append('dir', values.dir);
         link.searchParams.append('dirId', values.dirId);
