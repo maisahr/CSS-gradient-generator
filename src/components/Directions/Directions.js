@@ -1,3 +1,5 @@
+import './Directions.css'
+
 export const Directions = ({values, handleChange}) => {
 
     const handleChangeDirection = (direction, id) => {
@@ -20,7 +22,13 @@ export const Directions = ({values, handleChange}) => {
             <button id='arrow2' onClick={() => handleChangeDirection('top', 'arrow2')}>&uarr;</button>
             <button id='arrow3' onClick={() => handleChangeDirection('top right', 'arrow3')}>&#8599;</button>
             <button id='arrow4' onClick={() => handleChangeDirection('left', 'arrow4')}>&larr;</button>
-            {values.style === 'radial' && <button id='arrowR5' onClick={() => handleChangeDirection('center', 'arrowR5')}>&#9675;</button>}
+            <button id='arrowR5' onClick={() => handleChangeDirection('center', 'arrowR5')}>&#9675;</button>
+            {values.style === 'radial' && <style>{`
+                #arrowR5 {
+                    visibility: visible;
+                    display: inline;
+                }
+            `}</style>}
             <button id='arrow5' onClick={() => handleChangeDirection('right', 'arrow5')}>&rarr;</button>
             <button id='arrow6' onClick={() => handleChangeDirection('bottom left', 'arrow6')}>&#8601;</button>
             <button id='arrow7' onClick={() => handleChangeDirection('bottom', 'arrow7')}>&#8595;</button>

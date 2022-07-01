@@ -1,0 +1,9 @@
+#arrowR5 {
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    #arrowR5 {
+        display: none;
+    }
+}
