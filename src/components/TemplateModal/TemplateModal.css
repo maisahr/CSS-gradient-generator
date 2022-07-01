@@ -46,6 +46,11 @@ form input {
     font-weight: bold;
 }
 
+.formButton:enabled {
+    background-color: #3d4853;
+    color: white;
+}
+
 @media only screen and (max-width: 600px) {
     .modal {
         width: 60%;

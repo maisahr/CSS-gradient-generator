@@ -43,13 +43,14 @@ export const TemplateModal = ({open, onClose, values, updateTemplates, changeBut
         <div className="background">
             <section className="modal">
                 <button onClick={onClose} className='closeButton'>X</button>
+                <h1>Add a new template</h1>
                 <form>
                     <label htmlFor="templateName">Template's name:</label>
-                    <input type='text' name='template' className="formInput" onChange={handleChangeTemplate}></input>
+                    <input type='text' id='templateName' name='template' className="formInput" onChange={handleChangeTemplate}></input>
 
                     <label htmlFor="username">Created by:</label>
-                    <input type='text' name='username' className="formInput" onChange={handleChangeUser}></input>
-                    <button className="getButton" disabled={!username || !templateName} onClick={(e) => {
+                    <input type='text' id='username' name='username' className="formInput" onChange={handleChangeUser}></input>
+                    <button className="getButton formButton" disabled={!username || !templateName} onClick={(e) => {
                         e.preventDefault(); 
                         saveTemplate(templateName, username, values);
                     }}>Save</button>
