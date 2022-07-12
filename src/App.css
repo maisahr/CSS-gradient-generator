@@ -15,8 +15,16 @@ main {
 }
 
 .gradient {
+  position: relative;
   width:100%;
   height: 100vh;
+}
+
+.scroll {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2%;
 }
 
 @media only screen and (max-width: 600px) {

@@ -49,6 +49,7 @@ function App() {
       <main>
         <section className="gradient">
           <Gradient values={values} selector={'.gradient'}/>
+          <h2 className='scroll'>Scroll for saved templates &#8595;</h2>
         </section>
         <Templates updateTemplates={updateTemplates} 
           handleChange={handleChange}
